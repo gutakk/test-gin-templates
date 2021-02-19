@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   db_test:
-    image: postgres:13.2
+    image: postgres:12.3
     container_name: test-gin-templates_db_test
     environment:
       - POSTGRES_DB=test-gin-templates_test
