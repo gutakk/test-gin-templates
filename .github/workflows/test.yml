@@ -22,5 +22,8 @@ jobs:
         with:
           version: v1.29
 
+      - name: Docker ps
+        run: docker ps
+
       - name: Test
         run: make test
