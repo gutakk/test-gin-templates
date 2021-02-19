@@ -22,7 +22,7 @@ jobs:
         with:
           version: v1.29
 
-      - name: Down the test database
+      - name: Down test database container
         run: docker-compose -f docker-compose.test.yml down
 
       - name: Test
