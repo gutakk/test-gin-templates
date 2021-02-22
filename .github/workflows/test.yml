@@ -22,11 +22,8 @@ jobs:
       #   with:
       #     version: v1.29
 
-      - name: Setup test database
-        run: docker-compose -f docker-compose.test.yml up -d
+      - name: Setup test
+        run: docker ps
 
       - name: Test
-        run: go test -v -p 1 -count=1 ./...
-
-      - name: Teardown test database
-        run: docker-compose -f docker-compose.test.yml down
+        run: make test
