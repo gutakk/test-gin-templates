@@ -22,8 +22,5 @@ jobs:
       #   with:
       #     version: v1.29
 
-      - name: Setup test
-        run: docker ps
-
       - name: Test
         run: make test
