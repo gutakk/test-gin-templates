@@ -17,13 +17,13 @@ jobs:
       - name: Create ENV file
         run: cp ".env.test" ".env"
 
-      - name: Install dependencies
-        run: make install-dependencies
-
       - name: Linters
-        uses: actions-contrib/golangci-lint@v1
+        uses: golangci/golangci-lint-action@v2
         with:
           version: v1.29
+
+      - name: Install dependencies
+        run: make install-dependencies
 
       - name: Test
         run: make test
