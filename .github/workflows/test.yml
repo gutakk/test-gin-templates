@@ -22,8 +22,5 @@ jobs:
       - name: Create ENV file
         run: cp ".env.test" ".env"
 
-      - name: Install dependencies
-        run: make install-dependencies
-
       - name: Test
         run: make test
