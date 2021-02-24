@@ -22,5 +22,8 @@ jobs:
       - name: Create ENV file
         run: cp ".env.test" ".env"
 
+      - name: Install Goose
+        run: go get -u github.com/pressly/goose/cmd/goose
+
       - name: Test
         run: make test
