@@ -24,7 +24,8 @@ func InitDatabase() {
 }
 
 func getDatabaseURL() string {
-	if gin.Mode() == gin.ReleaseMode {
+	if gin.Mode() == gin.ReleaseMode || viper.GetString("DATABASE_URL") != "" {
+		log.Printf("============ %v", viper.GetString("DATABASE_URL"))
 		return viper.GetString("DATABASE_URL")
 	}
 
