@@ -21,7 +21,7 @@ jobs:
         run: make install-dependencies
 
       - name: Linters
-        uses: golangci/golangci-lint-action@v2
+        uses: actions-contrib/golangci-lint@v1
         with:
           version: v1.29
 
