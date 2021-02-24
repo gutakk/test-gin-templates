@@ -14,16 +14,16 @@ jobs:
         with:
           go-version: 1.16.x
 
-      # - name: Linters
-      #   uses: golangci/golangci-lint-action@v2
-      #   with:
-      #     version: v1.29
-
       - name: Create ENV file
         run: cp ".env.test" ".env"
 
       - name: Install Goose
         run: go get -u github.com/pressly/goose/cmd/goose
+
+      - name: Linters
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.29
 
       - name: Test
         run: make test
