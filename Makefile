@@ -44,4 +44,4 @@ test:
 	docker-compose -f docker-compose.test.yml down
 
 wait-for-postgres:
-	$(shell ./wait-for-postgres.sh)
+	$(shell DATABASE_URL=$(DATABASE_URL) ./wait-for-postgres.sh)

@@ -17,8 +17,8 @@ jobs:
       - name: Create ENV file
         run: cp ".env.test" ".env"
 
-      - name: Install Goose
-        run: go get -u github.com/pressly/goose/cmd/goose
+      - name: Install dependencies
+        run: make install-dependencies
 
       - name: Linters
         uses: golangci/golangci-lint-action@v2
