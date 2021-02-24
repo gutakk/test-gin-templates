@@ -12,7 +12,7 @@ env-teardown:
 	docker-compose -f docker-compose.dev.yml down
 
 db/migrate:
-	sleep 1
+	sleep 3
 	goose -dir database/migrations -table "migration_versions" postgres "$(DATABASE_URL)" up
 
 db/rollback:
