@@ -14,6 +14,7 @@ import (
 )
 
 func InitDatabase() {
+	log.Println("====================== ", gin.Mode())
 	db, err := gorm.Open(postgres.Open(getDatabaseURL()), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("Failed to connect to %v database: %v", gin.Mode(), err)
