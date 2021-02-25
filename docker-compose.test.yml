@@ -19,6 +19,8 @@ services:
     build:
       context: .
     container_name: test-gin-templates_test
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@test-gin-templates_db_test/test-gin-templates_test?sslmode=disable
     command: ./bin/test.sh
     depends_on:
       db_test:
