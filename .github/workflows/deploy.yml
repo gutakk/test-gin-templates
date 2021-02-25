@@ -6,7 +6,6 @@ on:
       - Test
     branches:
       - main
-      - develop
       - development
   workflow_dispatch:
 
