@@ -9,19 +9,3 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
       - "5433:5432"
-    healthcheck:
-      test: pg_isready
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  test:
-    build:
-      context: .
-    container_name: test-gin-templates_test
-    environment:
-      - DATABASE_URL=postgres://postgres:postgres@test-gin-templates_db_test/test-gin-templates_test?sslmode=disable
-    command: ./bin/test.sh
-    depends_on:
-      db_test:
-        condition: service_healthy

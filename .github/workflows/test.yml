@@ -22,8 +22,8 @@ jobs:
         with:
           version: v1.29
 
-      - name: Build image
-        run: docker-compose -f docker-compose.test.yml build
+      - name: Install dependencies
+        run: make install-dependencies
 
       - name: Test
-        run: make test-docker
+        run: make test
