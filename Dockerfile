@@ -1,5 +1,7 @@
 FROM golang:1.16-buster
 
+ARG DATABASE_URL
+
 ENV GIN_MODE=release
 
 WORKDIR /app
@@ -9,7 +11,9 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
-RUN make install-dependencies
+RUN go get github.com/pressly/goose/cmd/goose
+
+RUN goose -dir database/migrations -table "migration_versions" postgres "$DATABASE_URL" up
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main ./cmd/api
 
