@@ -30,15 +30,14 @@ jobs:
             echo "HEROKU_APP_NAME=${{ secrets.HEROKU_APP_NAME }}-staging" >> $GITHUB_ENV
           fi
 
-      - name: Set production environment variables
-        if: ${{ env.BRANCH_TAG == 'latest' }}
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL_PRODUCTION }}
-
-      - name: Set staging environment variables
-        if: ${{ env.BRANCH_TAG != 'latest' }}
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL_STAGING }}
+      - name: Set DATABASE_URL
+        run: |
+          if [[ $BRANCH_TAG = "latest" ]]
+          then
+            echo "DATABASE_URL=${{ secrets.DATABASE_URL_PRODUCTION }}" >> $GITHUB_ENV
+          else
+            echo "DATABASE_URL=${{ secrets.DATABASE_URL_STAGING }}" >> $GITHUB_ENV
+          fi
 
       - name: Deploy
         uses: akhileshns/heroku-deploy@v3.8.8
