@@ -34,15 +34,11 @@ jobs:
         if: ${{ env.BRANCH_TAG == 'latest' }}
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL_PRODUCTION }}
-        run: |
-          echo "DATABASE_URL=$DATABASE_URL" >> $GITHUB_ENV
 
       - name: Set staging environment variables
         if: ${{ env.BRANCH_TAG != 'latest' }}
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL_STAGING }}
-        run: |
-          echo "DATABASE_URL=$DATABASE_URL" >> $GITHUB_ENV
 
       - name: Deploy
         uses: akhileshns/heroku-deploy@v3.8.8
