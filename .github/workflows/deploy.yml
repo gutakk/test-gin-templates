@@ -6,8 +6,11 @@ on:
       - Test
     branches:
       - main
+      - master
+      - develop
       - development
   workflow_dispatch:
+
 
 jobs:
   deploy:
@@ -25,9 +28,9 @@ jobs:
         run: |
           if [[ $BRANCH_TAG = "latest" ]]
           then
-            echo "HEROKU_APP_NAME=${{ secrets.HEROKU_APP_NAME }}" >> $GITHUB_ENV
+            echo "HEROKU_APP_NAME=${{ secrets.HEROKU_APP_NAME_PRODUCTION }}" >> $GITHUB_ENV
           else
-            echo "HEROKU_APP_NAME=${{ secrets.HEROKU_APP_NAME }}-staging" >> $GITHUB_ENV
+            echo "HEROKU_APP_NAME=${{ secrets.HEROKU_APP_NAME_STAGING }}" >> $GITHUB_ENV
           fi
 
       - name: Set DATABASE_URL
@@ -48,3 +51,4 @@ jobs:
           usedocker: true
           docker_build_args: |
             DATABASE_URL
+
