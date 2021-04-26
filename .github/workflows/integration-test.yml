@@ -7,9 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Test Integration
+    env:
+      TEST: ${{ secrets.TEST }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Echo ENV
-        run: echo ${{ secrets.TEST }}
+        run: echo $TEST
