@@ -2,7 +2,7 @@ name: Integration test
 on: push
 
 env:
-  TEST: ${{ secrets.TEST }}
+  TEST: ${TEST}
 
 jobs:
   integ_test:
@@ -13,4 +13,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Echo ENV
-        run: echo hello
+        run: echo $TEST
