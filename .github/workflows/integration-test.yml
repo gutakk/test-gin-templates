@@ -1,13 +1,12 @@
 name: Integration test
 on: push
 
-env:
-  TEST: ${{ secrets.TEST }}
-
 jobs:
   integ_test:
     name: "Integration test"
     runs-on: ubuntu-latest
+    environment:
+      name: Test Integration
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
