@@ -2,7 +2,7 @@ name: Integration test
 on: push
 
 env:
-  TEST: ${{ github.TEST }}
+  TEST: ${{ secrets.DATABASE_URL_STAGING }}
 
 jobs:
   integ_test:
