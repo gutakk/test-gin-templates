@@ -6,9 +6,20 @@ jobs:
     name: "Integration test"
     runs-on: ubuntu-latest
     environment:
-      name: Test Integration
+      name: UAT Integration Test
     env:
-      TEST: ${{ secrets.TEST }}
+      ACQ_MERCHANT_ID: {{ secrets.ACQ_MERCHANT_ID }}
+      ACQ_REQUESTER_ID: {{ secrets.ACQ_REQUESTER_ID }}
+      BACKDOOR_API_KEY: {{ secrets.BACKDOOR_API_KEY }}
+      BACKDOOR_API_SECRET: {{ secrets.BACKDOOR_API_SECRET }}
+      HMAC_APP: {{ secrets.HMAC_APP }}
+      HMAC_KEY: {{ secrets. HMAC_KEY }}
+      HMAC_SECRET: {{ secrets.HMAC_SECRET }}
+      MAX_VALIDATE_TX_STATUS_POLLING_COUNT: {{ secrets.MAX_VALIDATE_TX_STATUS_POLLING_COUNT }}
+      MERCHANT_HOST: {{ secrets.MERCHANT_HOST }}
+      PAYMENT_ACCESS_TOKEN: {{ secrets.PAYMENT_ACCESS_TOKEN }}
+      PAYMENT_FUNDS_SOURCE_UID: {{ secrets.PAYMENT_FUNDS_SOURCE_UID }}
+      PAYMENT_SERVICE_HOST: {{ secrets.PAYMENT_SERVICE_HOST }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
