@@ -2,7 +2,7 @@ name: Integration test
 on: push
 
 env:
-  TEST: ${{ TEST }}
+  TEST: ${{ github.TEST }}
 
 jobs:
   integ_test:
